@@ -3,16 +3,18 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from "@/integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
-import { AuthState } from "@/types/auth";
+import { AuthState, UserProfile } from "@/types/auth";
 import { toast } from "@/hooks/use-toast";
 
 interface AuthContextType {
   user: User | null;
   session: Session | null;
   loading: boolean;
+  userProfile: UserProfile | null;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
+  refreshProfile: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -23,7 +25,32 @@ export const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }
     session: null,
     loading: true,
   });
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const navigate = useNavigate();
+
+  // Fetch user profile 
+  const fetchUserProfile = async (userId: string) => {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', userId)
+        .single();
+        
+      if (error) throw error;
+      setUserProfile(data);
+    } catch (error) {
+      console.error('Error fetching user profile:', error);
+      setUserProfile(null);
+    }
+  };
+
+  // Refresh user profile data
+  const refreshProfile = async () => {
+    if (authState.user?.id) {
+      await fetchUserProfile(authState.user.id);
+    }
+  };
 
   useEffect(() => {
     // Set up the auth state change listener first
@@ -34,6 +61,15 @@ export const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }
           session,
           loading: false,
         });
+        
+        // Fetch profile when auth state changes
+        if (session?.user) {
+          setTimeout(() => {
+            fetchUserProfile(session.user.id);
+          }, 0);
+        } else {
+          setUserProfile(null);
+        }
       }
     );
 
@@ -44,6 +80,11 @@ export const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }
         session,
         loading: false,
       });
+      
+      // Fetch profile for existing user
+      if (session?.user) {
+        fetchUserProfile(session.user.id);
+      }
     });
 
     return () => {
@@ -110,9 +151,11 @@ export const AuthProvider: React.FC<{children: React.ReactNode}> = ({ children }
       user: authState.user, 
       session: authState.session,
       loading: authState.loading,
+      userProfile,
       signIn,
       signUp,
-      signOut
+      signOut,
+      refreshProfile
     }}>
       {children}
     </AuthContext.Provider>

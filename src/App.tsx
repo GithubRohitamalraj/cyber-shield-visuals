@@ -15,6 +15,7 @@ import Stories from "./pages/Stories";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -24,9 +25,21 @@ const AppWithAuth = () => (
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<Auth />} />
-        <Route path="/scam-slayer" element={<ScamSlayer />} />
-        <Route path="/scam-slayer/:scenarioId" element={<ScamScenario />} />
-        <Route path="/safezone" element={<SafeZone />} />
+        <Route path="/scam-slayer" element={
+          <ProtectedRoute>
+            <ScamSlayer />
+          </ProtectedRoute>
+        } />
+        <Route path="/scam-slayer/:scenarioId" element={
+          <ProtectedRoute>
+            <ScamScenario />
+          </ProtectedRoute>
+        } />
+        <Route path="/safezone" element={
+          <ProtectedRoute>
+            <SafeZone />
+          </ProtectedRoute>
+        } />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/stories" element={<Stories />} />
         <Route path="/about" element={<About />} />

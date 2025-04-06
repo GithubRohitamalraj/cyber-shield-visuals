@@ -9,6 +9,30 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      completed_scenarios: {
+        Row: {
+          completed_at: string
+          id: string
+          scenario_id: number
+          score: number
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string
+          id?: string
+          scenario_id: number
+          score: number
+          user_id: string
+        }
+        Update: {
+          completed_at?: string
+          id?: string
+          scenario_id?: number
+          score?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -36,6 +60,63 @@ export type Database = {
           updated_at?: string
           username?: string | null
           xp?: number | null
+        }
+        Relationships: []
+      }
+      scam_reports: {
+        Row: {
+          created_at: string
+          details: Json | null
+          id: string
+          report_id: string
+          status: string
+          tx_hash: string | null
+          type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          details?: Json | null
+          id?: string
+          report_id: string
+          status?: string
+          tx_hash?: string | null
+          type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          details?: Json | null
+          id?: string
+          report_id?: string
+          status?: string
+          tx_hash?: string | null
+          type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_badges: {
+        Row: {
+          badge_id: number
+          earned_at: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          badge_id: number
+          earned_at?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          badge_id?: number
+          earned_at?: string
+          id?: string
+          user_id?: string
         }
         Relationships: []
       }
