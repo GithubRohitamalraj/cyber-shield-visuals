@@ -1,73 +1,60 @@
-# Welcome to your Lovable project
 
-## Project info
+# CyberShield - Cybersecurity Education Platform
 
-**URL**: https://lovable.dev/projects/c36bd5ad-3035-480b-9322-fa768d69f424
+CyberShield is a modern web application designed to educate users about various cyber threats through interactive, gamified learning experiences. This project demonstrates a conceptual UI for a cybersecurity education platform with two main modules:
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+### Scam Slayer
+- Interactive learning modules for different scam scenarios
+- Gamified experience with XP, badges, and levels
+- Realistic scam simulations with detailed explanations
+- Progress tracking and achievements
 
-**Use Lovable**
+### SafeZone
+- Anonymous reporting portal for cyber scams
+- Multi-step form for detailed scam reporting
+- Report tracking with blockchain-inspired verification
+- User-friendly status updates on submitted reports
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c36bd5ad-3035-480b-9322-fa768d69f424) and start prompting.
+### Additional Features
+- Leaderboard showing top users ranked by XP and contributions
+- Community stories section with shared experiences
+- Clean and modern UI with responsive design
+- Light theme with soft blue and purple accents
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
+## Technical Details
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- React with TypeScript
+- Tailwind CSS for styling
+- shadcn/ui component library
+- React Router for navigation
+- Framer Motion for animations
 
-## How can I deploy this project?
+## Design Choices
 
-Simply open [Lovable](https://lovable.dev/projects/c36bd5ad-3035-480b-9322-fa768d69f424) and click on Share -> Publish.
+- Light, modern theme with soft blue and purple accents
+- Rounded corners and subtle shadows for a friendly user experience
+- Responsive design that works well on mobile devices
+- Card-based UI for easy content consumption
+- Visual feedback for user interactions and gamification elements
 
-## Can I connect a custom domain to my Lovable project?
+## Project Structure
 
-Yes it is!
+- `/components` - Reusable UI components
+- `/pages` - Main application pages
+- `/components/layout` - Layout components like Navbar and Footer
+- `/components/safezone` - Components specific to the SafeZone module
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Getting Started
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Run the development server with `npm run dev`
+
+## Notes
+
+This is a concept project focused on UI/UX design. It contains dummy data and placeholder functionality to showcase the interface and user experience.
+
