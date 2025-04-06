@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Progress } from "@/components/ui/progress";
@@ -29,7 +30,7 @@ import {
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
-import { UserProfile, CompletedScenario } from "@/types/auth";
+import { UserProfile, CompletedScenario, badgeDefinitions, UserBadge } from "@/types/auth";
 
 // Mock scam scenarios
 const scamScenarios = [
@@ -162,8 +163,8 @@ const ScamSlayer = () => {
         if (badgesError) throw badgesError;
         
         setUserProfile(profile);
-        setCompletedScenarios(scenarios);
-        setUserBadges(badges.map(badge => badge.badge_id));
+        setCompletedScenarios(scenarios || []);
+        setUserBadges(badges?.map(badge => badge.badge_id) || []);
       } catch (error) {
         console.error('Error fetching user data:', error);
         toast({
