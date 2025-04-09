@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Progress } from "@/components/ui/progress";
@@ -106,14 +105,6 @@ const scamScenarios = [
     xp: 75,
     completed: false
   }
-];
-
-// Mock badges definition
-const badgeDefinitions = [
-  { id: 1, name: "Phishing Expert", icon: Mail, description: "Successfully completed all phishing challenges" },
-  { id: 2, name: "Scam Buster", icon: ShieldCheck, description: "Reported 5 or more scams" },
-  { id: 3, name: "Digital Defender", icon: Award, description: "Reached level 5" },
-  { id: 4, name: "Financial Guard", icon: CreditCard, description: "Completed all financial scam challenges" }
 ];
 
 const ScamSlayer = () => {
