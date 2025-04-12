@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
+import { Badge } from "@/components/ui/badge";
 import { 
   ChevronLeft, 
   AlertCircle, 
@@ -339,6 +340,270 @@ const scamScenarios = [
     ]
   }
 ];
+
+// New improved phishing simulation with the requested changes
+const improvedScamScenarios = [
+  {
+    id: 1,
+    title: "Phishing Login Page",
+    description: "Learn how to identify fake login pages that try to steal your credentials.",
+    content: `
+      <div class="max-w-md mx-auto border rounded-md overflow-hidden shadow-md">
+        <div class="p-4 bg-blue-600 flex items-center justify-between">
+          <div class="flex items-center">
+            <img src="https://via.placeholder.com/40x40?text=f" alt="Faceb00k" class="mr-2 h-8 w-8 filter blur-[0.5px]" />
+            <span class="text-white text-lg font-bold">faceb00k</span>
+          </div>
+          <div class="text-white text-xs">
+            <span class="bg-red-500 text-white px-1 py-0.5 rounded text-xs">secure-faceb00k-login.com</span>
+          </div>
+        </div>
+        <div class="p-6 bg-white space-y-6">
+          <div class="text-center space-y-2">
+            <div class="text-xl font-bold text-red-500">⚠️ Warning: Your Account is at Risk!</div>
+            <p class="text-gray-600">We've detected suspicious activity on your acount. Please login to verify your identity.</p>
+          </div>
+          
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Email or Phone</label>
+              <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border" placeholder="Email or phone" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Pssword</label>
+              <input type="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border" placeholder="Password" />
+            </div>
+          </div>
+          
+          <button class="w-full bg-blue-600 text-white p-2 rounded-md font-medium text-center">
+            Login Now to Secure Your Account
+          </button>
+          
+          <div class="text-center text-sm text-gray-500">
+            <a href="#" class="text-blue-600 hover:underline">Forgot Password?</a> | 
+            <a href="#" class="text-blue-600 hover:underline">Create New Account</a>
+          </div>
+        </div>
+      </div>
+    `,
+    redFlags: [
+      {
+        id: "flag1",
+        element: "secure-faceb00k-login.com",
+        explanation: "Suspicious URL with a misspelled domain name (faceb00k) and misleading 'secure' prefix"
+      },
+      {
+        id: "flag2",
+        element: "⚠️ Warning: Your Account is at Risk!",
+        explanation: "Creating urgency is a common phishing tactic to make you act without thinking"
+      },
+      {
+        id: "flag3",
+        element: "Pssword",
+        explanation: "Misspelled words and poor grammar are common signs of phishing pages"
+      },
+      {
+        id: "flag4",
+        element: "acount",
+        explanation: "Typos like 'acount' instead of 'account' indicate a fake page"
+      },
+      {
+        id: "flag5",
+        element: "faceb00k",
+        explanation: "Brand name with numbers replacing letters (0 instead of o) is a common phishing technique"
+      }
+    ],
+    questions: [
+      {
+        id: 1,
+        text: "What is the main red flag in this login page?",
+        options: [
+          { id: 'a', text: "The page has a Facebook logo" },
+          { id: 'b', text: "The URL contains 'faceb00k' with '00' instead of 'oo'" },
+          { id: 'c', text: "The login form asks for an email" },
+          { id: 'd', text: "The blue header matches Facebook's brand color" }
+        ],
+        correctAnswer: 'b',
+      },
+      {
+        id: 2,
+        text: "Why do phishers create this sense of urgency?",
+        options: [
+          { id: 'a', text: "To help protect your account quickly" },
+          { id: 'b', text: "To scare you into acting quickly without thinking critically" },
+          { id: 'c', text: "Because your account is actually at risk" },
+          { id: 'd', text: "To make the website seem more professional" }
+        ],
+        correctAnswer: 'b',
+      },
+      {
+        id: 3,
+        text: "What should you do if you encounter this page?",
+        options: [
+          { id: 'a', text: "Log in quickly to protect your account" },
+          { id: 'b', text: "Check your account security from the official app" },
+          { id: 'c', text: "Close the page and go directly to the real Facebook website by typing the URL" },
+          { id: 'd', text: "Enter fake details to see what happens" }
+        ],
+        correctAnswer: 'c',
+      }
+    ],
+    tips: [
+      "Always check the URL for unusual characters or typos",
+      "Be cautious of urgency traps like 'verify now' messages",
+      "Look for spelling and grammar errors in the content",
+      "Legitimate sites don't suddenly ask you to verify your account",
+      "When in doubt, access the site directly by typing the URL in your browser"
+    ]
+  },
+  {
+    id: 2,
+    title: "Fake Job Offer",
+    description: "Identify suspicious job opportunities that are too good to be true",
+    content: `
+      <div class="max-w-md mx-auto border rounded-md overflow-hidden shadow-md">
+        <div class="bg-white p-4 border-b">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="https://via.placeholder.com/40x40?text=E" alt="Email" class="h-6 w-6" />
+              <div>
+                <div class="font-semibold">New Job Offer</div>
+                <div class="text-xs text-gray-500">From: hr@job-portal-career.info</div>
+              </div>
+            </div>
+            <div class="text-xs text-gray-500">Today, 11:23 AM</div>
+          </div>
+        </div>
+        
+        <div class="p-4 bg-white space-y-4">
+          <div class="border-b pb-3">
+            <div class="flex items-center gap-3">
+              <div class="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+                <img src="https://via.placeholder.com/100x100?text=HR" alt="HR Profile" class="h-full w-full object-cover" style="filter: blur(0.6px);" />
+              </div>
+              <div>
+                <div class="font-semibold">Ms. Sophia Williams</div>
+                <div class="text-xs text-gray-500">HR Manager | Global Remote Jobs Inc.</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="space-y-3 text-sm">
+            <p>Dear Candidate,</p>
+            
+            <p>Congratulations! Your profile has been selected for the position of <strong>Remote Digital Marketing Specialist</strong> with our prestigious client.</p>
+            
+            <div class="bg-gray-50 p-3 rounded-md border">
+              <div class="font-semibold">Position Details:</div>
+              <ul class="list-disc pl-5 space-y-1 mt-1">
+                <li>Salary: $6,500 - $8,200 per month</li>
+                <li>Hours: 3-4 hours daily, completely flexible</li>
+                <li>Location: 100% remote work from home</li>
+                <li>Experience Required: Minimal (Training provided)</li>
+              </ul>
+            </div>
+            
+            <p>To confirm your position, you must complete the onboarding process within 24 hours by paying a refundable registration fee of ₹500 (approximately $6 USD) to cover administrative costs.</p>
+            
+            <div class="bg-yellow-50 p-3 rounded-md border border-yellow-200">
+              <div class="font-semibold text-yellow-800">Payment Details:</div>
+              <p class="mt-1">Send payment to:</p>
+              <p>UPI ID: quickjobsonboarding@ybl</p>
+              <p>Name: Career Placement Services</p>
+              <p class="mt-2 text-yellow-800 font-medium">*Fee will be refunded with your first salary payment</p>
+            </div>
+            
+            <p>Please respond URGENTLY as positions are filling quickly. After payment confirmation, we will send your contract and login details.</p>
+            
+            <p>Best regards,<br/>Sophia Williams<br/>HR Manager<br/>Global Remote Jobs Inc.</p>
+          </div>
+          
+          <div class="pt-3 border-t">
+            <button class="bg-green-600 text-white px-4 py-2 rounded w-full font-medium">Reply Now</button>
+          </div>
+        </div>
+      </div>
+    `,
+    redFlags: [
+      {
+        id: "flag1",
+        element: "hr@job-portal-career.info",
+        explanation: "Suspicious domain name that's generic and doesn't match a legitimate company"
+      },
+      {
+        id: "flag2",
+        element: "$6,500 - $8,200 per month",
+        explanation: "Unrealistically high salary for minimal work is a classic scam tactic"
+      },
+      {
+        id: "flag3",
+        element: "paying a refundable registration fee of ₹500",
+        explanation: "Legitimate employers never ask candidates to pay fees to get hired"
+      },
+      {
+        id: "flag4",
+        element: "Please respond URGENTLY as positions are filling quickly",
+        explanation: "Creating artificial urgency to rush you into making a payment without thinking"
+      },
+      {
+        id: "flag5",
+        element: "Dear Candidate",
+        explanation: "Generic greeting instead of using your name indicates a mass-sent scam"
+      },
+      {
+        id: "flag6",
+        element: "Global Remote Jobs Inc.",
+        explanation: "Vague company name that's hard to verify"
+      }
+    ],
+    questions: [
+      {
+        id: 1,
+        text: "What is the biggest red flag in this job offer?",
+        options: [
+          { id: 'a', text: "The position is remote" },
+          { id: 'b', text: "They ask for a registration fee" },
+          { id: 'c', text: "The job only requires 3-4 hours daily" },
+          { id: 'd', text: "The email came from an HR manager" }
+        ],
+        correctAnswer: 'b',
+      },
+      {
+        id: 2,
+        text: "Why is the salary a warning sign?",
+        options: [
+          { id: 'a', text: "The salary is normal for marketing work" },
+          { id: 'b', text: "The salary is too low for a specialist position" },
+          { id: 'c', text: "The salary is unrealistically high for minimal work hours" },
+          { id: 'd', text: "Global companies always pay in this range" }
+        ],
+        correctAnswer: 'c',
+      },
+      {
+        id: 3,
+        text: "What should you do if you receive this kind of job offer?",
+        options: [
+          { id: 'a', text: "Pay the fee quickly to secure the position" },
+          { id: 'b', text: "Negotiate a lower fee before paying" },
+          { id: 'c', text: "Reply asking for more company details" },
+          { id: 'd', text: "Ignore it - legitimate employers never charge fees to hire you" }
+        ],
+        correctAnswer: 'd',
+      }
+    ],
+    tips: [
+      "Real employers never ask for money upfront",
+      "Look for verified company emails, not generic domains",
+      "Be cautious of too-good-to-be-true offers with high pay for little work",
+      "Research the company thoroughly before engaging with recruiters",
+      "Verify job offers through official company websites or LinkedIn"
+    ]
+  }
+];
+
+// Update the scam scenarios array with the new improved scenarios
+scamScenarios[0] = improvedScamScenarios[0]; // Update phishing scenario
+scamScenarios[1] = improvedScamScenarios[1]; // Update fake job offer scenario
 
 const ScamScenario = () => {
   const { scenarioId } = useParams();
@@ -841,3 +1106,4 @@ const ScamScenario = () => {
 };
 
 export default ScamScenario;
+

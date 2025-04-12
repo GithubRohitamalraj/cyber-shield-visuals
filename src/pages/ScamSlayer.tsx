@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Progress } from "@/components/ui/progress";
@@ -35,8 +36,8 @@ import { UserProfile, CompletedScenario, badgeDefinitions, UserBadge } from "@/t
 const scamScenarios = [
   {
     id: 1,
-    title: "Phishing Email",
-    description: "Learn how to spot fraudulent emails trying to steal your information",
+    title: "Phishing Login Page",
+    description: "Learn how to spot fraudulent login pages trying to steal your credentials",
     icon: Mail,
     difficulty: "Easy",
     xp: 50,
@@ -244,7 +245,7 @@ const ScamSlayer = () => {
                           scenario.difficulty === "Medium" ? "text-yellow-600" : "text-red-600"
                         }`} />
                       </div>
-                      <Badge variant="outline" className="bg-secondary">
+                      <Badge variant="outline">
                         {scenario.xp} XP
                       </Badge>
                     </div>
@@ -296,3 +297,4 @@ const ScamSlayer = () => {
 };
 
 export default ScamSlayer;
+
